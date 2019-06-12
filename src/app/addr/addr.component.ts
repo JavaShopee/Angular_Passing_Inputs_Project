@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from './addr.model';
 
 @Component({
   selector: 'app-addr',
@@ -7,22 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AddrComponent implements OnInit {
 
-  user : any
+  @Input('user') user : User
   @Input('title') userTitle : string
+  toggleCollapsed : boolean = true
   constructor() { 
 
   }
 
+  toggleCollapse()
+  {
+    this.toggleCollapsed = !this.toggleCollapsed
+  }
+
   ngOnInit() {
-    this.user = {
-       title : this.userTitle,
-       designation :'Software Engineer',
-       address : '1213 New GreenBoro Drive, New York, NY , USA',
-       phone : [
-         '123-234-3456',
-         '345-456-5678',
-         '567-789-9876',
-       ]
-    }
+    
   }
 }
